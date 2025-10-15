@@ -2,26 +2,24 @@
 
 import { useState } from "react";
 type ModelJSON = {
-    summaryRewrite: string;
-    skillsToAdd?: string[];
-    bullets?: { section?: string; original?: string; suggested: string }[];
-    projectideas?: string[];
-    notes?: string[];
-  };
+  summaryRewrite: string;
+  skillsToAdd?: string[];
+  bullets?: { section?: string; original?: string; suggested: string }[];
+  projectideas?: string[];
+  notes?: string[];
+};
 
-      type AnalysisResult = {
-      summary: string;
-      Suggestions: string[];
-      projects: string[];
-      bulletReplacements: string[];
-      toAdd: string[];
-      raw: string;
-      json: ModelJSON | null;
-    };
+type AnalysisResult = {
+  summary: string;
+  Suggestions: string[];
+  projects: string[];
+  bulletReplacements: string[];
+  toAdd: string[];
+  raw: string;
+  json: ModelJSON | null;
+};
 export default function Home() {
-
- 
- const [results, setResults] = useState<AnalysisResult | null>(null);
+  const [results, setResults] = useState<AnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {
@@ -53,7 +51,17 @@ export default function Home() {
       >
         {/* Gemini API Key */}
         <div>
-          <label className="block mb-1 font-medium">Gemini API Key</label>
+          <label className="mb-1 font-medium flex items-center justify-between">
+            <span>Gemini API Key</span>
+            <a
+              href="https://aistudio.google.com/api-keys"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 text-sm hover:underline"
+            >
+              Get your own API key
+            </a>
+          </label>
           <input
             type="text"
             name="apiKey"
